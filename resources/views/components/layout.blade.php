@@ -11,13 +11,13 @@
 <body>
     <div class="wraper__head">
         <div class="wraper__burger__menu">
-            <div class="burger__menu">
+            <button class="burger__menu">
                 <div class="element">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-            </div>
+            </button>
         </div>
         <div class="wraper__label">
             <div class="label">
@@ -26,6 +26,8 @@
         </div>
 
     </div>
-    {{$slot}}
+    <main>
+        {{$slot}}
+    </main>
 </body>
 </html>
