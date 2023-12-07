@@ -282,3 +282,58 @@ body{
 .wraper__delete{
     padding: 29px 29px 0;
 }
+.sidebar{
+    background: linear-gradient( to right, #D573DF, #CF842B);
+    width: 469px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+}
+.sidebar_none{
+    display: none;
+}
+.wraper__spisok ul{
+    display: flex;
+    flex-direction: column;
+}
+.wraper__spisok li {
+    margin-bottom: 79px;
+}
+.wraper__spisok ul{
+    list-style: none;
+    padding: 16px;
+    margin: 0;
+}
+.wraper__spisok a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+.line3, .line4{
+    display: inline;
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #efefef;
+}
+.line3{
+    transform: rotate(46deg);
+}
+.line4{
+    transform: rotate(131deg);
+}
+
+.wraper__burger-menu__close{
+    padding: 10px 10px 0 0;
+}
+.burger-menu__close{
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient( to right, #D573DF, #CF842B);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+}

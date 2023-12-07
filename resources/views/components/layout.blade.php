@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
+<div class="sidebar sidebar_none">
+    <div class="wraper__spisok">
+        <ul>
+            <li><a href="/Main">Главная</a></li>
+            <li><a href="/Delete">Удалённые</a></li>
+            <li><a href="/Succes">Выполненные</a></li>
+        </ul>
+    </div>
+    <div class="wraper__burger-menu__close">
+        <button class="burger-menu__close">
+            <span class="line3"></span>
+            <spam class="line4"></spam>
+        </button>
+    </div>
+</div>
     <div class="wraper__head">
         <div class="wraper__burger__menu">
             <button class="burger__menu">
@@ -24,7 +39,6 @@
                 {{$title}}
             </div>
         </div>
-
     </div>
     <main>
         {{$slot}}
