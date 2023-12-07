@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 let sidebar = document.querySelector('.sidebar');
 let burger__menu = document.querySelector('.burger__menu');
 let burger__menu__close = document.querySelector('.burger-menu__close');
