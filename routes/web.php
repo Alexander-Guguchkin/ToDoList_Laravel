@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/layout', function (){
-    return view('components.layout');
-});
 Route::get('/Main', function (){
     return view('MainView');
+});
+Route::get('/Succes', function (){
+    return view('SuccesView');
+});
+Route::get('/Delete', function (){
+    return view('DeleteView');
+});
+Route::get('sidebar', function (){
+    return view('components.sidebar');
 });
