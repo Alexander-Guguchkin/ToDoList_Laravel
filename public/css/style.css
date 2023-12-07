@@ -100,6 +100,7 @@ body{
     .label__task{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
     .text{
         flex-grow: 6;
@@ -229,6 +230,7 @@ body{
     .label__task{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
     .text{
         flex-grow: 6;
@@ -336,4 +338,21 @@ body{
     border-radius: 40px;
     cursor: pointer;
     border: none;
+}
+.context_menu{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient( to right, #D573DF, #CF842B);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 19px;
+    padding: 20px;
+}
+.options{
+    margin-left: 16px;
+    display: flex;
+    border: none;
+    background: none;
+    font-size: 34px;
+}
+.input__task{
 }
