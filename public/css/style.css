@@ -65,13 +65,13 @@ body{
     }
     .form{
         padding: 29px 29px 0;
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        row-gap: 20%;
+        display: flex;
+        flex-direction: column;
         font-size: 24px;
     }
     .input{
         display: flex;
+        margin-bottom: 1%;
     }
     .create__task {
         border: 2px solid rgba(255, 255, 255, 0.64);
@@ -197,9 +197,9 @@ body{
     }
     .form{
         padding: 29px 29px 0 ;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         font-size: 24px;
-
     }
     .wraper__create__task{
         display: flex;
@@ -341,18 +341,43 @@ body{
 }
 .context_menu{
     display: flex;
+    position: absolute;
     flex-direction: column;
     background: linear-gradient( to right, #D573DF, #CF842B);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 19px;
     padding: 20px;
+    margin-top: 20px;
 }
+
 .options{
     margin-left: 16px;
     display: flex;
     border: none;
     background: none;
     font-size: 34px;
+    cursor: pointer;
 }
-.input__task{
+
+
+.wraper__context__menu{
+    display: flex;
+    justify-content: end;
+}
+.wraper__context__menu_none{
+    display: none;
+}
+.context_menu button{
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+.edits{
+    border: none;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 6px;
+}
+.delete{
+    margin: 6px;
+    border: none;
 }
