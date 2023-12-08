@@ -12,15 +12,16 @@
                 <div class="text">Задача номер 1</div>
                 <input type="checkbox" class="checkbox-round">
                 <button class="options">
-                    <img src="{{asset('image/selections.png')}}">
+                    <i class="ri-arrow-down-s-line"></i>
                 </button>
-            </div>
-            <div class="wraper__context__menu wraper__context__menu_none">
-                <div class="context_menu">
-                    <button class="edits">Редактровать</button>
-                    <button class="delete">Удалить</button>
+                <div class="wraper__context__menu wraper__context__menu_none">
+                    <div class="context_menu">
+                        <button class="edits">Редактровать</button>
+                        <button class="delete">Удалить</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </x-layout>

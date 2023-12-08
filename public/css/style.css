@@ -101,6 +101,7 @@ body{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 20px;
     }
     .text{
         flex-grow: 6;
@@ -231,6 +232,7 @@ body{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 20px;
     }
     .text{
         flex-grow: 6;
@@ -349,7 +351,6 @@ body{
     padding: 20px;
     margin-top: 20px;
 }
-
 .options{
     margin-left: 16px;
     display: flex;
@@ -358,8 +359,6 @@ body{
     font-size: 34px;
     cursor: pointer;
 }
-
-
 .wraper__context__menu{
     display: flex;
     justify-content: end;
@@ -381,3 +380,4 @@ body{
     margin: 6px;
     border: none;
 }
+
