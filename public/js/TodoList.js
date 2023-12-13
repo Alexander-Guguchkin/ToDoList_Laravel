@@ -2,23 +2,44 @@
 
 let input__Create__Task = document.querySelector('.input__create__task');
 let button__create = document.querySelector('.button__create');
-let button__edits = document.querySelector('.edits');
+
 let button__delete = document.querySelector('.delete');
 let storage = [];
 
-function addArray(text){
-    storage.push(text);
-}
-
 button__create.addEventListener('click', ()=>{
     let value__input = input__Create__Task.value;
-    addArray(value__input);
+    storage.push(value__input);
     let output = document.querySelector('.output');
+    output.innerHTML += "             <div class=\"label__task create__task\">\n" +
+        "                <div class=\"text\">`${{value__input}}`</div>\n" +
+        "                <input type=\"checkbox\" class=\"checkbox-round\">\n" +
+        "                <div class=\"buttons\">\n" +
+        "                    <div class=\"edits\">\n" +
+        "                        <i class=\"ri-edit-line\"></i>\n" +
+        "                    </div>\n" +
+        "                    <button class=\"delete\">\n" +
+        "                        <i class=\"ri-delete-bin-2-line\"></i>\n" +
+        "                    </button>\n" +
+        "                </div>\n" +
+        "            </div>";
+    let text = document.querySelector('.text');
+    //
+    // text.textContent = value__input;
+
+    let button__edits = document.querySelectorAll('.edits');
+    for (const buttonEdit of button__edits) {
+        if (buttonEdit){
+            buttonEdit.addEventListener('click', ()=>{
+                console.log(1)
+            });
+        }
+    }
+
 
 });
-// button__edits.addEventListener('click', ()=>{
-//
-// });
+
+
+
 // button__delete.addEventListener('click', ()=>{
 //
 // });

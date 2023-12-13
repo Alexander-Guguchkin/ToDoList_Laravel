@@ -341,43 +341,23 @@ body{
     cursor: pointer;
     border: none;
 }
-.context_menu{
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    background: linear-gradient( to right, #D573DF, #CF842B);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 19px;
-    padding: 20px;
-    margin-top: 20px;
-}
-.options{
-    margin-left: 16px;
-    display: flex;
-    border: none;
-    background: none;
-    font-size: 34px;
-    cursor: pointer;
-}
-.wraper__context__menu{
-    display: flex;
-    justify-content: end;
-}
-.wraper__context__menu_none{
-    display: none;
-}
-.context_menu button{
-    background: none;
-    cursor: pointer;
-    font-size: 20px;
-}
 .edits{
     border: none;
-    border-bottom: 1px solid #efefef;
-    padding-bottom: 6px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .delete{
     margin: 6px;
     border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
+.buttons{
+    display: flex;
+    margin-left: 16px;
+}

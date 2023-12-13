@@ -45,7 +45,6 @@
         {{$slot}}
     </main>
     <script src="{{asset('js/sidebar.js')}}"></script>
-    <script src="{{asset('js/context__menu.js')}}"></script>
     <script src="{{asset('js/TodoList.js')}}"></script>
 </body>
 </html>
