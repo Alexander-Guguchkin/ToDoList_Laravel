@@ -26,15 +26,6 @@ button__create.addEventListener('click', ()=>{
     //
     // text.textContent = value__input;
 
-    let button__edits = document.querySelectorAll('.edits');
-    for (const buttonEdit of button__edits) {
-        if (buttonEdit){
-            buttonEdit.addEventListener('click', ()=>{
-                console.log(1)
-            });
-        }
-    }
-
 
 });
 
