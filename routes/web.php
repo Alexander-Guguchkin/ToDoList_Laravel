@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TodolistController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,4 @@ Route::get('/Delete', function (){
 Route::get('sidebar', function (){
     return view('components.sidebar');
 });
+Route::get('/addTask/{text}', [TodolistController::class, 'createTask']);

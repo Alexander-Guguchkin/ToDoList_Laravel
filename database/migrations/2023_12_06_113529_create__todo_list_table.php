@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_todo_list', function (Blueprint $table) {
+        Schema::create('todoLists', function (Blueprint $table) {
             $table->id();
+            $table->text('text');
+            $table->text('status');
             $table->timestamps();
         });
     }
