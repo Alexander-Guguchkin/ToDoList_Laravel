@@ -10,32 +10,30 @@ button__create.addEventListener('click', ()=>{
     let value__input = input__Create__Task.value;
     storage.push(value__input);
     let output = document.querySelector('.output');
-    output.innerHTML += "             <div class=\"label__task create__task\">\n" +
-        "                <div class=\"text\">`${{value__input}}`</div>\n" +
-        "                <input type=\"checkbox\" class=\"checkbox-round\">\n" +
-        "                <div class=\"buttons\">\n" +
-        "                    <div class=\"edits\">\n" +
-        "                        <i class=\"ri-edit-line\"></i>\n" +
-        "                    </div>\n" +
-        "                    <button class=\"delete\">\n" +
-        "                        <i class=\"ri-delete-bin-2-line\"></i>\n" +
-        "                    </button>\n" +
-        "                </div>\n" +
-        "            </div>";
-    let text = document.querySelector('.text');
-    //
-    // text.textContent = value__input;
-
-    let button__edits = document.querySelectorAll('.edits');
-    for (const buttonEdit of button__edits) {
-        if (buttonEdit){
-            buttonEdit.addEventListener('click', ()=>{
-                console.log(1)
-            });
-        }
-    }
-
-
+    let labelTask = dociment.createElement('div');
+    labelTask.classList.add('create__task');
+    output.append(labelTask);
+    let text = document.createElement('div')
+    text.textContent = value__input;
+    let checkboxRound = document.createElement('div');
+    checkboxRound.type = 'checkbox';
+    checkboxRound.classList.add('checkbox-round');
+    checkboxRound.id = 'myCheckbox'; // Устанавливаем уникальный идентификатор
+    checkboxRound.name = 'myCheckbox'; // Устанавливаем имя для отправки формы
+    let buttons = document.createElement('div');
+    buttons.classList.add('edits');
+    labelTask.append(text, checkboxRound, buttons);
+    let edits = document.createElement('div');
+    edits.classList.add('edits');
+    let editline = document.createElement('i');
+    editline.classList.add('ri-edit-line');
+    edits.append(editline);
+    let deletes = document.createElement('div');
+    deletes.classList.add('delete');
+    let deleteline = document.createElement('i');
+    deleteline.classList.add('ri-delete-bin-2-line');
+    deletes.append(deleteline);
+    buttons.append(edits, deletes);
 });
 
 
