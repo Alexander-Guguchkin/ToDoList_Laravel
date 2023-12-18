@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\TodoList;
-use function Laravel\Prompts\text;
 
+//use function Laravel\Prompts\text;
+use App\Models\Task;
 class TodolistController extends Controller
 {
     public function index()
     {
 
     }
-    public function createTask($text)
+    public function createTask()
     {
-        TodoList::created([
-            'text' => $text
+        Task::create([
+            'taskText' => 'task1',
+            'statusTask' => 'none'
         ]);
     }
     public function deleteTask()

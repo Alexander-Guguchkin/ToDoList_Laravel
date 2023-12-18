@@ -28,4 +28,4 @@ Route::get('/Delete', function (){
 Route::get('sidebar', function (){
     return view('components.sidebar');
 });
-Route::get('/addTask/{text}', [TodolistController::class, 'createTask']);
+Route::get('/addTask', [TodolistController::class, 'createTask']);
