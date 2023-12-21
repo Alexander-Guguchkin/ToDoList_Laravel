@@ -15,6 +15,30 @@ class TodolistController extends Controller
     }
     public function deleteTask($Task)
     {
+        deleteTaskMain($Task);
+        //Добавление в бд Delete
+        Delete::create([
+            'deleteTask' => $Task,
+            'statusTask' => 'deleteTask'
+        ]);
+    }
+    public function editTask($id, $Task)
+    {
+       $task = new Task();
+       $task->update($Task);
+       $task->save();
+    }
+    public function acceptTask($id, $Task)
+    {
+        deleteTaskMain($Task);
+        //Добавление в бд Accepts
+        Accept::create([
+            'task' => $Task,
+            'statusTask' => 'acceptTask'
+        ]);
+    }
+
+    private function deleteTaskMain($id, $Task){
         //Удаление из Tasks
         $task = Task::where('taskText',$Task)->first();
         if ($task) {
@@ -22,28 +46,5 @@ class TodolistController extends Controller
         } else {
             echo "Задача не найдена.";
         }
-        //Добавление в бд Delete
-        Delete::create([
-            'deleteTask' => $Task,
-            'statusTask' => 'deleteTask'
-        ]);
-    }
-    public function editTask($task)
-    {
-
-    }
-    public function acceptTask($Task)
-    {
-        $task = Task::where('taskText',$Task)->first();
-        if ($task) {
-            $task->delete();
-        } else {
-            echo "Задача не найдена.";
-        }
-        //Добавление в бд Accepts
-        Accept::create([
-            'task' => $Task,
-            'statusTask' => 'acceptTask'
-        ]);
     }
 }
