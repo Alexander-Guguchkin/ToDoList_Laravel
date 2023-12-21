@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Delete;
-
+use App\Models\Accept;
 class TodolistController extends Controller
 {
-    public function index()
-    {
-
-    }
     public function createTask($taskTask)
     {
         Task::create([
@@ -25,7 +21,6 @@ class TodolistController extends Controller
             $task->delete();
         } else {
             echo "Задача не найдена.";
-            dump($task);
         }
         //Добавление в бд Delete
         Delete::create([
@@ -33,12 +28,22 @@ class TodolistController extends Controller
             'statusTask' => 'deleteTask'
         ]);
     }
-    public function editTask()
+    public function editTask($task)
     {
 
     }
-    public function acceptTask()
+    public function acceptTask($Task)
     {
-
+        $task = Task::where('taskText',$Task)->first();
+        if ($task) {
+            $task->delete();
+        } else {
+            echo "Задача не найдена.";
+        }
+        //Добавление в бд Accepts
+        Accept::create([
+            'task' => $Task,
+            'statusTask' => 'acceptTask'
+        ]);
     }
 }
