@@ -19,8 +19,8 @@ Route::get('/', function () {
 Route::get('/Main', function (){
     return view('MainView');
 });
-Route::get('/Succes', function (){
-    return view('SuccesView');
+Route::get('/Success', function (){
+    return view('SuccessView');
 });
 Route::get('/Delete', function (){
     return view('DeleteView');
@@ -28,4 +28,6 @@ Route::get('/Delete', function (){
 Route::get('sidebar', function (){
     return view('components.sidebar');
 });
-Route::get('/addTask', [TodolistController::class, 'createTask']);
+Route::get('/addTask/{taskTask}', [TodolistController::class, 'createTask'])->name('addTask');
+Route::get('/deleteTask/{Task}', [TodolistController::class, 'deleteTask'])->name('deleteTask');
+Route::get('/successTask/{Task}', [TodolistController::class, 'acceptTask'])->name('successTask');
