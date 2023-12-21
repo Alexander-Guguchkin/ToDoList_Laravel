@@ -15,7 +15,7 @@
         <ul>
             <li><a href="/Main">Главная</a></li>
             <li><a href="/Delete">Удалённые</a></li>
-            <li><a href="/Succes">Выполненные</a></li>
+            <li><a href="/Success">Выполненные</a></li>
         </ul>
     </div>
     <div class="wraper__burger-menu__close">
