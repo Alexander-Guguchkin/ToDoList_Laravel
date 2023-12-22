@@ -15,7 +15,7 @@ class TodolistController extends Controller
     }
     public function deleteTask($Task)
     {
-        deleteTaskMain($Task);
+        $this->deleteTaskMain($Task);
         //Добавление в бд Delete
         Delete::create([
             'deleteTask' => $Task,
@@ -30,14 +30,18 @@ class TodolistController extends Controller
     }
     public function acceptTask($id, $Task)
     {
-        deleteTaskMain($Task);
+        $this->deleteTaskMain($Task);
         //Добавление в бд Accepts
         Accept::create([
             'task' => $Task,
             'statusTask' => 'acceptTask'
         ]);
     }
-
+    public function showTask()
+    {
+        $task = Task::all();
+        dump($task);
+    }
     private function deleteTaskMain($id, $Task){
         //Удаление из Tasks
         $task = Task::where('taskText',$Task)->first();

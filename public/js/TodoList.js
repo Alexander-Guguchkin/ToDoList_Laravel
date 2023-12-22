@@ -51,3 +51,7 @@ function renderTask(array){
     deletes.append(deleteline);
     buttons.append(edits, deletes);
 }
+
+function fetchTask(){
+    fetch("/");
+}
