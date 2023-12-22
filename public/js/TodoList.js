@@ -51,7 +51,15 @@ function renderTask(array){
     deletes.append(deleteline);
     buttons.append(edits, deletes);
 }
-
+fetchTask();
 function fetchTask(){
-    fetch("/");
+    fetch("/showTask").then(
+        response=>{
+            return response.text();
+        }
+    ).then(
+        text=>{
+            console.log(text);
+        }
+    );
 }

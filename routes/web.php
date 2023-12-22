@@ -32,4 +32,4 @@ Route::get('/addTask/{taskTask}', [TodolistController::class, 'createTask'])->na
 Route::get('/deleteTask/{Task}', [TodolistController::class, 'deleteTask'])->name('deleteTask');
 Route::get('/successTask/{Task}', [TodolistController::class, 'acceptTask'])->name('successTask');
 Route::get('/editTask/{Task}', [TodolistController::class, 'editTask'])->name('editTask');
-Route::get('/showTask', [TodolistController::class, 'showTask'])->name('showTask');
+Route::get('/showTask', [TodolistController::class, 'showTasks'])->name('showTask');

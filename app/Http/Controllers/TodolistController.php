@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Delete;
 use App\Models\Accept;
+use function Laravel\Prompts\text;
+
 class TodolistController extends Controller
 {
     public function createTask($taskTask)
@@ -37,10 +39,13 @@ class TodolistController extends Controller
             'statusTask' => 'acceptTask'
         ]);
     }
-    public function showTask()
+    public function showTasks()
     {
-        $task = Task::all();
-        dump($task);
+        $task = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
+        foreach ($task as $tasks){
+            $attributes = $tasks->getAttributes();
+            dump($attributes);
+        }
     }
     private function deleteTaskMain($id, $Task){
         //Удаление из Tasks
