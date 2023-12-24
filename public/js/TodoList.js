@@ -5,10 +5,10 @@ let button__create = document.querySelector('.button__create');
 let output = document.querySelector('.output');
 let storage = [];
 button__create.addEventListener('click', ()=>{
-    let addstorage = [];
     //Создание
     let value__input = input__Create__Task.value;
-    addstorage.push(value__input);
+    addTask(value__input);
+    showTaskOne();
     // renderTask(addstorage);
     //Удаление
     let labelTask = document.querySelector('.label__task');
@@ -64,5 +64,22 @@ function showTask(){
             }
         }
     );
+}
+function showTaskOne(){
+    fetch("/showTask").then(
+        response=>{
+            return response.json();
+        }
+    ).then(
+        data=>{
+            for (const iterator of data) {
+                storage.push(iterator['taskText']);
+            }
+            renderTask(storage[storage.length-1]);
+        }
+    );
+}
+function addTask(text){
+    fetch(`/addTask/${text}`);
 }
 showTask();

@@ -57,7 +57,7 @@ body{
     }
     main{
         background: linear-gradient( to right, #D573DF, #CF842B);
-        height: 1096px;
+        height: auto;
         width: 1850px;
         margin: 0 auto;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -190,7 +190,7 @@ body{
     }
     main{
         background: linear-gradient( to right, #D573DF, #CF842B);
-        height: 601px;
+        height: auto;
         width: 1280px;
         margin: 0 auto;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

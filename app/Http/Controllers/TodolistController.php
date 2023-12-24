@@ -42,7 +42,6 @@ class TodolistController extends Controller
     public function showTasks()
     {
         $task = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
-        // $json = json_encode($task);
         return response()->json($task);
     }
     private function deleteTaskMain($id, $Task){
