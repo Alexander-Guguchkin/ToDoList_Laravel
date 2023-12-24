@@ -9,7 +9,7 @@ button__create.addEventListener('click', ()=>{
     //Создание
     let value__input = input__Create__Task.value;
     addstorage.push(value__input);
-    renderTask(addstorage);
+    // renderTask(addstorage);
     //Удаление
     let labelTask = document.querySelector('.label__task');
     let text = document.querySelector('.text');
@@ -19,18 +19,16 @@ button__create.addEventListener('click', ()=>{
         dataDelete.push(textValue);
         output.removeChild(labelTask);
     });
-
-
 });
 
-function renderTask(array){
+function renderTask(texts){
     let labelTask = document.createElement('div');
     labelTask.classList.add('label__task');
     labelTask.classList.add('create__task');
     output.append(labelTask);
     let text = document.createElement('div')
     text.classList.add('text');
-    text.textContent = array[array.length-1];
+    text.textContent = texts;
     let checkboxRound = document.createElement('input');
     checkboxRound.type = 'checkbox';
     checkboxRound.classList.add('checkbox-round');
@@ -51,15 +49,20 @@ function renderTask(array){
     deletes.append(deleteline);
     buttons.append(edits, deletes);
 }
-fetchTask();
-function fetchTask(){
+function showTask(){
     fetch("/showTask").then(
         response=>{
-            return response.text();
+            return response.json();
         }
     ).then(
-        text=>{
-            console.log(text);
+        data=>{
+            for (const iterator of data) {
+                storage.push(iterator['taskText']);
+            }
+            for (const iterator of storage) {
+                renderTask(iterator)
+            }
         }
     );
 }
+showTask();
