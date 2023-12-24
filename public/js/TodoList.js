@@ -9,7 +9,6 @@ button__create.addEventListener('click', ()=>{
     let value__input = input__Create__Task.value;
     addTask(value__input);
     showTaskOne();
-    // renderTask(addstorage);
     //Удаление
     let labelTask = document.querySelector('.label__task');
     let text = document.querySelector('.text');
