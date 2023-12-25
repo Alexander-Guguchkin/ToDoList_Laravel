@@ -52,7 +52,6 @@ function renderTask(texts){
         //     // output.removeChild(labelTask);
         // });
     }
-
 }
 function showTask(){
     fetch("/showTask").then(
