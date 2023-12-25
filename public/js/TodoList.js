@@ -9,16 +9,52 @@ button__create.addEventListener('click', ()=>{
     let value__input = input__Create__Task.value;
     addTask(value__input);
     showTaskOne();
-    //Удаление
-    let labelTask = document.querySelector('.label__task');
-    let text = document.querySelector('.text');
-    let textValue = text.textContent;
-    let dataDelete = [];
-    labelTask.querySelector('.delete').addEventListener('click', ()=>{
-        dataDelete.push(textValue);
-        output.removeChild(labelTask);
-    });
+    // //Удаление
+    // let labelTask = document.querySelector('.label__task');
+    // let text = document.querySelector('.text');
+    // let textValue = text.textContent;
+    // let dataDelete = [];
+    // labelTask.querySelector('.delete').addEventListener('click', ()=>{
+    //     for (const storageElement of storage) {
+    //         console.log(storageElement);
+    //     }
+    //     dataDelete.push(textValue);
+    //     // output.removeChild(labelTask);
+    // });
 });
+
+//Удаление
+function deleteTask(){
+    if(document.querySelector('.label__task') !==null){
+        let labelTask = document.querySelector('.label__task');
+        let text = document.querySelector('.text');
+        let textValue = text.textContent;
+        let dataDelete = [];
+        labelTask.querySelector('.delete').addEventListener('click', ()=>{
+            for (const storageElement of storage) {
+                console.log(storageElement);
+            }
+            dataDelete.push(textValue);
+            // output.removeChild(labelTask);
+        });
+    }
+    else{
+
+    }
+
+}
+deleteTask();
+
+
+
+
+
+
+
+
+
+
+
 
 function renderTask(texts){
     let labelTask = document.createElement('div');
