@@ -39,18 +39,24 @@ function renderTask(texts){
     buttons.append(edits, deletes);
     if(storage != null){
         let labelTask = document.querySelector('.label__task');
-        console.log(labelTask)
-        // let text = labelTask.querySelectorAll('.text');
+        // console.log(labelTask)
+        let text = labelTask.querySelectorAll('.text');
         // console.log(text)
-        // let textValue = text.textContent;
-        // let dataDelete = [];
-        // labelTask.querySelector('.delete').addEventListener('click', ()=>{
-        //     for (const storageElement of storage) {
-        //         console.log(storageElement);
-        //     }
-        //     dataDelete.push(textValue);
-        //     // output.removeChild(labelTask);
-        // });
+        let textValue = text.textContent;
+        let dataDelete = [];
+        let deleteButton = labelTask.querySelectorAll('.delete');
+        for (const iterator of deleteButton) {
+            iterator.addEventListener('click', (e)=>{
+                let x = e.target.id;
+                console.log(x.parentE);
+                //     console.log(storageElement);
+                //     dataDelete.push(storageElement);
+                //     deleteTask(storageElement.id, storageElement.taskText);
+                // dataDelete.push(textValue);
+                // output.removeChild(labelTask);
+            });
+        }
+
     }
 }
 function showTask(){
@@ -69,7 +75,7 @@ function showTask(){
                         renderTask(iterator[iteratorKey]);
                     }
                 }
-                console.log(storage)
+                // console.log(storage)
             }
         }
     );
