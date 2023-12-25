@@ -9,53 +9,7 @@ button__create.addEventListener('click', ()=>{
     let value__input = input__Create__Task.value;
     addTask(value__input);
     showTaskOne();
-    // //Удаление
-    // let labelTask = document.querySelector('.label__task');
-    // let text = document.querySelector('.text');
-    // let textValue = text.textContent;
-    // let dataDelete = [];
-    // labelTask.querySelector('.delete').addEventListener('click', ()=>{
-    //     for (const storageElement of storage) {
-    //         console.log(storageElement);
-    //     }
-    //     dataDelete.push(textValue);
-    //     // output.removeChild(labelTask);
-    // });
 });
-
-//Удаление
-function deleteTask(){
-    if(document.querySelector('.label__task') !==null){
-        let labelTask = document.querySelector('.label__task');
-        let text = document.querySelector('.text');
-        let textValue = text.textContent;
-        let dataDelete = [];
-        labelTask.querySelector('.delete').addEventListener('click', ()=>{
-            for (const storageElement of storage) {
-                console.log(storageElement);
-            }
-            dataDelete.push(textValue);
-            // output.removeChild(labelTask);
-        });
-    }
-    else{
-
-    }
-
-}
-deleteTask();
-
-
-
-
-
-
-
-
-
-
-
-
 function renderTask(texts){
     let labelTask = document.createElement('div');
     labelTask.classList.add('label__task');
@@ -83,6 +37,22 @@ function renderTask(texts){
     deleteline.classList.add('ri-delete-bin-2-line');
     deletes.append(deleteline);
     buttons.append(edits, deletes);
+    if(storage != null){
+        let labelTask = document.querySelector('.label__task');
+        console.log(labelTask)
+        // let text = labelTask.querySelectorAll('.text');
+        // console.log(text)
+        // let textValue = text.textContent;
+        // let dataDelete = [];
+        // labelTask.querySelector('.delete').addEventListener('click', ()=>{
+        //     for (const storageElement of storage) {
+        //         console.log(storageElement);
+        //     }
+        //     dataDelete.push(textValue);
+        //     // output.removeChild(labelTask);
+        // });
+    }
+
 }
 function showTask(){
     fetch("/showTask").then(
