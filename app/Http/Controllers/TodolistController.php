@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Delete;
 use App\Models\Accept;
-use function Laravel\Prompts\text;
 
 class TodolistController extends Controller
 {
@@ -15,9 +14,9 @@ class TodolistController extends Controller
             'statusTask' => 'none'
         ]);
     }
-    public function deleteTask($Task)
+    public function deleteTask($id, $Task)
     {
-        $this->deleteTaskMain($Task);
+        $this->deleteTaskMain($id, $Task);
         //Добавление в бд Delete
         Delete::create([
             'deleteTask' => $Task,
@@ -46,7 +45,7 @@ class TodolistController extends Controller
     }
     private function deleteTaskMain($id, $Task){
         //Удаление из Tasks
-        $task = Task::where('taskText',$Task)->first();
+        $task = Task::where('id', $id)->where('taskText',$Task)->first();
         if ($task) {
             $task->delete();
         } else {

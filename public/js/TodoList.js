@@ -56,10 +56,15 @@ function showTask(){
     ).then(
         data=>{
             for (const iterator of data) {
-                storage.push(iterator['taskText']);
+                storage.push({id:iterator['id'], taskText:iterator['taskText']});
             }
             for (const iterator of storage) {
-                renderTask(iterator)
+                for (const iteratorKey in iterator) {
+                    if(typeof iterator[iteratorKey] == 'string'){
+                        renderTask(iterator[iteratorKey]);
+                    }
+                }
+                console.log(storage)
             }
         }
     );
@@ -80,5 +85,8 @@ function showTaskOne(){
 }
 function addTask(text){
     fetch(`/addTask/${text}`);
+}
+function deleteTask(id, text){
+    fetch(`/deleteTask/${id}/${text}`);
 }
 showTask();
