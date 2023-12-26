@@ -38,25 +38,15 @@ function renderTask(texts){
     deletes.append(deleteline);
     buttons.append(edits, deletes);
     if(storage != null){
-        let labelTask = document.querySelector('.label__task');
-        // console.log(labelTask)
-        let text = labelTask.querySelectorAll('.text');
-        // console.log(text)
-        let textValue = text.textContent;
-        let dataDelete = [];
-        let deleteButton = labelTask.querySelectorAll('.delete');
-        for (const iterator of deleteButton) {
-            iterator.addEventListener('click', (e)=>{
-                let x = e.target.id;
-                console.log(x.parentE);
-                //     console.log(storageElement);
-                //     dataDelete.push(storageElement);
-                //     deleteTask(storageElement.id, storageElement.taskText);
-                // dataDelete.push(textValue);
-                // output.removeChild(labelTask);
+        let button__delete = document.querySelectorAll('.delete'); // Выберите все кнопки удаления
+        button__delete.forEach((button)=>{ // Для каждого элемента кнопки удаления
+            button.addEventListener('click', (e)=>{ // Добавьте обработчик событий
+                let x = e.target.closest('.label__task'); // Выберите ближайший родительский элемент с классом 'label__task'
+                let text1 = x.querySelector('.text');
+                let value = text1.textContent;
+                // console.log(value); // Выведите этот элемент в консоль
             });
-        }
-
+        });
     }
 }
 function showTask(){
