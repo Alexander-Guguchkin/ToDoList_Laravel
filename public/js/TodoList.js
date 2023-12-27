@@ -62,6 +62,7 @@ function showTask(){
                         for (const storageElement of storage) {
                             if (button.id == storageElement.id){
                                 deleteTask(button.id,storageElement.taskText);
+                                refatching();
                             }
                         }
                     });
@@ -70,6 +71,23 @@ function showTask(){
         }
     );
 }
+function refatching(){
+    fetch("/showTask").then(
+        response=>{
+            return response.json();
+        }
+    ).then(
+        data=>{
+            storage = data;
+            console.log(data);
+            console.log(storage);
+            // for (const datum of data) {
+            //
+            // }
+        }
+    );
+}// исправить
+
 function showTaskOne(){
     fetch("/showTask").then(
         response=>{
