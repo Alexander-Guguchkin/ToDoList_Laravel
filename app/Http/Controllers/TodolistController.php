@@ -43,6 +43,15 @@ class TodolistController extends Controller
         $task = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
         return response()->json($task);
     }
+    public function  showTaskOne()
+    {
+        $tasks = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
+        foreach ($tasks as $task){
+            $t1 = $task->getAttributes();
+        }
+        return response()->json($t1);
+
+    }
     private function deleteTaskMain($id){
         //Удаление из Tasks
         $task = Task::where('id', $id)->first();

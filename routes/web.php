@@ -33,3 +33,4 @@ Route::get('/deleteTask/{id}/{Task}', [TodolistController::class, 'deleteTask'])
 Route::get('/successTask/{Task}', [TodolistController::class, 'acceptTask'])->name('successTask');
 Route::get('/editTask/{Task}', [TodolistController::class, 'editTask'])->name('editTask');
 Route::get('/showTask', [TodolistController::class, 'showTasks'])->name('showTask');
+Route::get('/showTaskOne', [TodolistController::class, 'showTaskOne'])->name('showTaskOne');

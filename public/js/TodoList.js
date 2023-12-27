@@ -8,7 +8,6 @@ button__create.addEventListener('click', ()=>{
     //Создание
     let value__input = input__Create__Task.value;
     addTask(value__input);
-    showTaskOne();
 });
 function renderTask(id, texts){
     let labelTask = document.createElement('div');
@@ -62,43 +61,11 @@ function showTask(){
                         for (const storageElement of storage) {
                             if (button.id == storageElement.id){
                                 deleteTask(button.id,storageElement.taskText);
-                                refatching();
                             }
                         }
                     });
                 });
             }
-        }
-    );
-}
-function refatching(){
-    fetch("/showTask").then(
-        response=>{
-            return response.json();
-        }
-    ).then(
-        data=>{
-            storage = data;
-            console.log(data);
-            console.log(storage);
-            // for (const datum of data) {
-            //
-            // }
-        }
-    );
-}// исправить
-
-function showTaskOne(){
-    fetch("/showTask").then(
-        response=>{
-            return response.json();
-        }
-    ).then(
-        data=>{
-            for (const iterator of data) {
-                storage.push(iterator['taskText']);
-            }
-            renderTask(storage[storage.length-1]);
         }
     );
 }
