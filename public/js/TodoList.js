@@ -10,7 +10,7 @@ button__create.addEventListener('click', ()=>{
     addTask(value__input);
     showTaskOne();
 });
-function renderTask(texts){
+function renderTask(id, texts){
     let labelTask = document.createElement('div');
     labelTask.classList.add('label__task');
     labelTask.classList.add('create__task');
@@ -35,20 +35,19 @@ function renderTask(texts){
     deletes.classList.add('delete');
     let deleteline = document.createElement('i');
     deleteline.classList.add('ri-delete-bin-2-line');
+    deleteline.id = id;
     deletes.append(deleteline);
     buttons.append(edits, deletes);
     if(storage != null){
         let button__delete = document.querySelectorAll('.delete'); // Выберите все кнопки удаления
         button__delete.forEach((button)=>{ // Для каждого элемента кнопки удаления
             button.addEventListener('click', (e)=>{ // Добавьте обработчик событий
-                let x = e.target.closest('.label__task'); // Выберите ближайший родительский элемент с классом 'label__task'
-                let text1 = x.querySelector('.text');
-                let value = text1.textContent;
-                // console.log(value); // Выведите этот элемент в консоль
+
             });
         });
     }
 }
+
 function showTask(){
     fetch("/showTask").then(
         response=>{
@@ -60,13 +59,12 @@ function showTask(){
                 storage.push({id:iterator['id'], taskText:iterator['taskText']});
             }
             for (const iterator of storage) {
-                for (const iteratorKey in iterator) {
-                    if(typeof iterator[iteratorKey] == 'string'){
-                        renderTask(iterator[iteratorKey]);
-                    }
+                if(typeof iterator.taskText == 'string'){
+                    renderTask(iterator.id,iterator.taskText);
                 }
-                // console.log(storage)
             }
+            // let buttonDelete = document.querySelector('.delete');
+            // buttonDelete.id =
         }
     );
 }
