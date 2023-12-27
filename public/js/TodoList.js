@@ -33,19 +33,11 @@ function renderTask(id, texts){
     edits.append(editline);
     let deletes = document.createElement('div');
     deletes.classList.add('delete');
+    deletes.id = id;
     let deleteline = document.createElement('i');
     deleteline.classList.add('ri-delete-bin-2-line');
-    deleteline.id = id;
     deletes.append(deleteline);
     buttons.append(edits, deletes);
-    if(storage != null){
-        let button__delete = document.querySelectorAll('.delete'); // Выберите все кнопки удаления
-        button__delete.forEach((button)=>{ // Для каждого элемента кнопки удаления
-            button.addEventListener('click', (e)=>{ // Добавьте обработчик событий
-
-            });
-        });
-    }
 }
 
 function showTask(){
@@ -63,8 +55,18 @@ function showTask(){
                     renderTask(iterator.id,iterator.taskText);
                 }
             }
-            // let buttonDelete = document.querySelector('.delete');
-            // buttonDelete.id =
+            if(storage !== null){
+                let button__delete = document.querySelectorAll('.delete');
+                button__delete.forEach((button)=>{
+                    button.addEventListener('click', ()=>{
+                        for (const storageElement of storage) {
+                            if (button.id == storageElement.id){
+                                deleteTask(button.id,storageElement.taskText);
+                            }
+                        }
+                    });
+                });
+            }
         }
     );
 }

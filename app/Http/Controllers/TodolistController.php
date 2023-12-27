@@ -16,7 +16,7 @@ class TodolistController extends Controller
     }
     public function deleteTask($id, $Task)
     {
-        $this->deleteTaskMain($id, $Task);
+        $this->deleteTaskMain($id);
         //Добавление в бд Delete
         Delete::create([
             'deleteTask' => $Task,
@@ -43,9 +43,9 @@ class TodolistController extends Controller
         $task = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
         return response()->json($task);
     }
-    private function deleteTaskMain($id, $Task){
+    private function deleteTaskMain($id){
         //Удаление из Tasks
-        $task = Task::where('id', $id)->where('taskText',$Task)->first();
+        $task = Task::where('id', $id)->first();
         if ($task) {
             $task->delete();
         } else {
