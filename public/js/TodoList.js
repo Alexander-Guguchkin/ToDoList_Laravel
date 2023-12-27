@@ -8,6 +8,7 @@ button__create.addEventListener('click', ()=>{
     //Создание
     let value__input = input__Create__Task.value;
     addTask(value__input);
+    showTask();
 });
 function renderTask(id, texts){
     let labelTask = document.createElement('div');
@@ -39,33 +40,46 @@ function renderTask(id, texts){
     buttons.append(edits, deletes);
 }
 
-function showTask(){
+function showTask(status){
     fetch("/showTask").then(
         response=>{
             return response.json();
         }
     ).then(
         data=>{
-            for (const iterator of data) {
-                storage.push({id:iterator['id'], taskText:iterator['taskText']});
-            }
-            for (const iterator of storage) {
-                if(typeof iterator.taskText == 'string'){
-                    renderTask(iterator.id,iterator.taskText);
+                for (const iterator of data) {
+                    storage.push({id:iterator['id'], taskText:iterator['taskText']});
                 }
-            }
-            if(storage !== null){
-                let button__delete = document.querySelectorAll('.delete');
-                button__delete.forEach((button)=>{
-                    button.addEventListener('click', ()=>{
-                        for (const storageElement of storage) {
-                            if (button.id == storageElement.id){
-                                deleteTask(button.id,storageElement.taskText);
-                            }
+
+                    for (const iterator of storage) {
+                        if(typeof iterator.taskText == 'string'){
+                            renderTask(iterator.id,iterator.taskText);
                         }
+                    }
+
+                    // Сделать как отдельной функцией
+                    // let var1
+                    // for (const storageElement of storage) {
+                    //     var1 = storageElement;
+                    // }
+                    // if(typeof var1.taskText == 'string'){
+                    //     console.log(1);
+                    //     renderTask(var1.id,var1.taskText);
+                    // }
+
+                if(storage !== null){
+                    let button__delete = document.querySelectorAll('.delete');
+                    button__delete.forEach((button)=>{
+                        button.addEventListener('click', ()=>{
+                            for (const storageElement of storage) {
+                                if (button.id == storageElement.id){
+                                    deleteTask(button.id,storageElement.taskText);
+                                }
+                            }
+                        });
                     });
-                });
-            }
+                }
+
         }
     );
 }
