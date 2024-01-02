@@ -3,12 +3,12 @@
 let input__Create__Task = document.querySelector('.input__create__task');
 let button__create = document.querySelector('.button__create');
 let output = document.querySelector('.output');
-let storage = [];
 button__create.addEventListener('click', ()=>{
     //Создание
     let value__input = input__Create__Task.value;
     addTask(value__input);
-    showOneTask()
+    // showOneTask();
+    autoFetch();
 });
 function renderTask(id, texts){
     let labelTask = document.createElement('div');
@@ -50,13 +50,15 @@ function showTask(){
             for (const datum of data) {
                 renderTask(datum.id, datum.taskText);
             }
-                if(storage !== null){
+                if(data !== null){
                     let button__delete = document.querySelectorAll('.delete');
                     button__delete.forEach((button)=>{
                         button.addEventListener('click', ()=>{
                             for (const datum of data) {
                                 if (button.id == datum.id){
+                                    autoFetch();
                                     deleteTask(button.id,datum.taskText);
+
                                 }
                             }
                         });
@@ -82,5 +84,12 @@ function addTask(text){
 }
 function deleteTask(id, text){
     fetch(`/deleteTask/${id}/${text}`);
+}
+function autoFetch(){
+    let tasks = document.querySelectorAll(".label__task");
+    for (const iterator of tasks) {
+        output.removeChild(iterator);
+    }
+    showTask()
 }
 showTask();
