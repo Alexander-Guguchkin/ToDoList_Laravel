@@ -4,10 +4,8 @@ let input__Create__Task = document.querySelector('.input__create__task');
 let button__create = document.querySelector('.button__create');
 let output = document.querySelector('.output');
 button__create.addEventListener('click', ()=>{
-    //Создание
     let value__input = input__Create__Task.value;
     addTask(value__input);
-    // showOneTask();
     autoFetch();
 });
 function renderTask(id, texts){
@@ -28,6 +26,7 @@ function renderTask(id, texts){
     labelTask.append(text, checkboxRound, buttons);
     let edits = document.createElement('div');
     edits.classList.add('edits');
+    edits.id = id;
     let editline = document.createElement('i');
     editline.classList.add('ri-edit-line');
     edits.append(editline);
@@ -56,26 +55,13 @@ function showTask(){
                         button.addEventListener('click', ()=>{
                             for (const datum of data) {
                                 if (button.id == datum.id){
-                                    autoFetch();
                                     deleteTask(button.id,datum.taskText);
-
+                                    autoFetch();
                                 }
                             }
                         });
                     });
                 }
-        }
-    );
-}
-function showOneTask (){
-    fetch("/showTask").then(
-        response=>{
-            return response.json();
-        }
-    ).then(
-        data=>{
-            let val1 = data[data.length-1];
-            renderTask(val1.id, val1.taskText);
         }
     );
 }

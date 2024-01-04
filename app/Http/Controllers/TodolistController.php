@@ -7,6 +7,7 @@ use App\Models\Accept;
 
 class TodolistController extends Controller
 {
+    //Создание задачи
     public function createTask($taskTask)
     {
         Task::create([
@@ -14,46 +15,39 @@ class TodolistController extends Controller
             'statusTask' => 'none'
         ]);
     }
+    //Добавление в бд Delete
     public function deleteTask($id, $Task)
     {
         $this->deleteTaskMain($id);
-        //Добавление в бд Delete
         Delete::create([
             'deleteTask' => $Task,
             'statusTask' => 'deleteTask'
         ]);
     }
+    //Редактирование задачи
     public function editTask($id, $Task)
     {
-       $task = new Task();
-       $task->update($Task);
-       $task->save();
+        $task = Task::find($id);
+        $task->taskText = $Task;
+        $task->save();
     }
+    //Добавление в бд Accepts
     public function acceptTask($id, $Task)
     {
         $this->deleteTaskMain($Task);
-        //Добавление в бд Accepts
         Accept::create([
             'task' => $Task,
             'statusTask' => 'acceptTask'
         ]);
     }
+    //Получение всех записей
     public function showTasks()
     {
         $task = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
         return response()->json($task);
     }
-    public function  showTaskOne()
-    {
-        $tasks = Task::select('id', 'taskText', 'statusTask', 'updated_at', 'created_at')->get();
-        foreach ($tasks as $task){
-            $t1 = $task->getAttributes();
-        }
-        return response()->json($t1);
-
-    }
+    //Удаление из Tasks
     private function deleteTaskMain($id){
-        //Удаление из Tasks
         $task = Task::where('id', $id)->first();
         if ($task) {
             $task->delete();
