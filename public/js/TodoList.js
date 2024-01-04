@@ -51,7 +51,7 @@ function showTask(){
             }
                 if(data !== null){
                     let button__delete = document.querySelectorAll('.delete');
-                    button__delete.forEach((button)=>{
+                    button__delete.forEach(button=>{
                         button.addEventListener('click', ()=>{
                             for (const datum of data) {
                                 if (button.id == datum.id){
@@ -60,6 +60,28 @@ function showTask(){
                                 }
                             }
                         });
+                    });
+                    let button__edits = document.querySelectorAll('.edits');
+                    button__edits.forEach(button=>{
+                        button.addEventListener('click',()=>{          
+                            let label__task = button.closest('.label__task');
+                            let text = label__task.querySelector('.text');
+                            // console.log(text.textContent);
+                            input__Create__Task.value = text.textContent;
+                            
+                            for (const datum of data) {
+                                if (button.id == datum.id){
+                                    input__Create__Task.addEventListener('keyup', (e)=>{
+                                        if(e.key == 'Enter'){
+                                            editTask(button.id,input__Create__Task.value);
+                                            autoFetch();
+                                        }
+
+                                    });
+
+                                }
+                            }
+                        }); 
                     });
                 }
         }
@@ -70,6 +92,9 @@ function addTask(text){
 }
 function deleteTask(id, text){
     fetch(`/deleteTask/${id}/${text}`);
+}
+function editTask(id, text){
+    fetch(`/editTask/${id}/${text}`);
 }
 function autoFetch(){
     let tasks = document.querySelectorAll(".label__task");
