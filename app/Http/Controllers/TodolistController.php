@@ -34,7 +34,7 @@ class TodolistController extends Controller
     //Добавление в бд Accepts
     public function acceptTask($id, $Task)
     {
-        $this->deleteTaskMain($Task);
+        $this->deleteTaskMain($id);
         Accept::create([
             'task' => $Task,
             'statusTask' => 'acceptTask'

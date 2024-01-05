@@ -30,6 +30,6 @@ Route::get('sidebar', function (){
 });
 Route::get('/addTask/{taskTask}', [TodolistController::class, 'createTask'])->name('addTask');
 Route::get('/deleteTask/{id}/{Task}', [TodolistController::class, 'deleteTask'])->name('deleteTask');
-Route::get('/successTask/{Task}', [TodolistController::class, 'acceptTask'])->name('successTask');
+Route::get('/successTask/{id}/{Task}', [TodolistController::class, 'acceptTask'])->name('successTask');
 Route::get('/editTask/{id}/{Task}', [TodolistController::class, 'editTask'])->name('editTask');
 Route::get('/showTask', [TodolistController::class, 'showTasks'])->name('showTask');
