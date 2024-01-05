@@ -10,4 +10,5 @@
         <div class="output">
         </div>
     </div>
+    <script src="{{asset('js/TodoList.js')}}"></script>
 </x-layout>
