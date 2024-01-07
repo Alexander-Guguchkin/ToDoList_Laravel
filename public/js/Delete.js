@@ -22,17 +22,11 @@ function renderTask(id, texts) {
     let checkboxRound = document.createElement('input');
     checkboxRound.type = 'checkbox';
     checkboxRound.classList.add('checkbox-round');
+    checkboxRound.style.background = 'red';
     checkboxRound.id = id;
     checkboxRound.name = 'TaskCheckbox';
     let buttons = document.createElement('div');
     buttons.classList.add('buttons');
     labelTask.append(text, checkboxRound, buttons);
-    let deletes = document.createElement('div');
-    deletes.classList.add('delete');
-    deletes.id = id;
-    let deleteline = document.createElement('i');
-    deleteline.classList.add('ri-delete-bin-2-line');
-    deletes.append(deleteline);
-    buttons.append(deletes);
 }
 showTaskDelete();

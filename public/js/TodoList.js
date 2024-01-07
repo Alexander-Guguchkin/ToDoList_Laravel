@@ -25,10 +25,10 @@ function successTask(id, text){
 }
 
 // Сортировка и поиск эллемента  
-function searchElement (objData, callback){
+function searchElement (objData, callback, id){
     for (const datum of objData) {
-        if (button.id == datum.id) {
-            callback(button.id, datum.taskText);
+        if (id == datum.id) {
+            callback(id, datum.taskText);
             autoFetch();
         }
     }
@@ -69,7 +69,7 @@ function showTask() {
                 let buttonDelete = document.querySelectorAll('.delete');
                 buttonDelete.forEach(button => {
                     button.addEventListener('click', () => {
-                        searchElement(data, deleteTask);
+                        searchElement(data, deleteTask, button.id);
                     });
                 });
 
@@ -85,7 +85,7 @@ function showTask() {
                             if (button.id == datum.id) {
                                 inputCreateTask.addEventListener('keyup', (e) => {
                                     if (e.key == 'Enter') {
-                                        editTask(button.id, inputCreateTask.value);
+                                        editTask(button.id, inputCreateTask.value, button.id);
                                         autoFetch();
                                     }
                                 });
@@ -93,12 +93,12 @@ function showTask() {
                         }
                     });
                 });
-                
+
                 // Выполенение задачи
                 let acceptButton = document.querySelectorAll('.checkbox-round');
                 acceptButton.forEach(button => {
                     button.addEventListener('click', ()=>{
-                        searchElement(data, successTask);
+                        searchElement(data, successTask, button.id);
                     })
                 });
             }

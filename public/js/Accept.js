@@ -22,6 +22,7 @@ function renderTask(id, texts) {
     let checkboxRound = document.createElement('input');
     checkboxRound.type = 'checkbox';
     checkboxRound.classList.add('checkbox-round');
+    checkboxRound.style.background = '#07db07';
     checkboxRound.id = id;
     checkboxRound.name = 'TaskCheckbox';
     let buttons = document.createElement('div');
