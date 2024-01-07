@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        TODO LIST
+        Список задач
     </x-slot:title>
     <div class="form">
         <div class="input">

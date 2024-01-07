@@ -1,13 +1,111 @@
 'use strict'
 
-let input__Create__Task = document.querySelector('.input__create__task');
-let button__create = document.querySelector('.button__create');
+let inputCreateTask = document.querySelector('.input__create__task');
+let buttonCreate = document.querySelector('.button__create');
 let output = document.querySelector('.output');
-button__create.addEventListener('click', () => {
-    let value__input = input__Create__Task.value;
-    addTask(value__input);
-    autoFetch();
+
+// Отправка задачи на сервер
+function addTask(text) {
+    fetch(`/addTask/${text}`);
+}
+
+// Отправка задачи на удаление 
+function deleteTask(id, text) {
+    fetch(`/deleteTask/${id}/${text}`);
+}
+
+// Отправка задачи на сервер 
+function editTask(id, text) {
+    fetch(`/editTask/${id}/${text}`);
+}
+
+// Отправка задачи на выполнение  
+function successTask(id, text){
+    fetch(`/successTask/${id}/${text}`);
+}
+
+// Сортировка и поиск эллемента  
+function searchElement (objData, callback){
+    for (const datum of objData) {
+        if (button.id == datum.id) {
+            callback(button.id, datum.taskText);
+            autoFetch();
+        }
+    }
+} 
+
+// Обновление страницы
+function autoFetch() {
+    let labelTask = document.querySelectorAll(".label__task");
+    for (const iterator of labelTask) {
+        output.removeChild(iterator);
+    }
+    showTask();
+}
+
+// Создание задачи
+buttonCreate.addEventListener('click', () => {
+    let valueInput = inputCreateTask.value;
+    addTask(valueInput); 
+    autoFetch(); 
 });
+
+//Получение и обработка задач с сервера
+function showTask() {
+    fetch("/showTask").then(
+        response => {
+            return response.json();
+        }
+    ).then(
+        data => {
+
+            // Обработка и рендеринг этой задачи
+            for (const datum of data) {
+                renderTask(datum.id, datum.taskText);
+            }
+
+            if (data !== null) {
+                // Удаление задачи
+                let buttonDelete = document.querySelectorAll('.delete');
+                buttonDelete.forEach(button => {
+                    button.addEventListener('click', () => {
+                        searchElement(data, deleteTask);
+                    });
+                });
+
+                // Редактирование задачи
+                // callback функция прописанная
+                let buttonEdits = document.querySelectorAll('.edits');
+                buttonEdits.forEach(button => {
+                    button.addEventListener('click', () => {
+                        let labelTask = button.closest('.label__task');
+                        let text = labelTask.querySelector('.text');
+                        inputCreateTask.value = text.textContent;
+                        for (const datum of data) {
+                            if (button.id == datum.id) {
+                                inputCreateTask.addEventListener('keyup', (e) => {
+                                    if (e.key == 'Enter') {
+                                        editTask(button.id, inputCreateTask.value);
+                                        autoFetch();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                });
+                
+                // Выполенение задачи
+                let acceptButton = document.querySelectorAll('.checkbox-round');
+                acceptButton.forEach(button => {
+                    button.addEventListener('click', ()=>{
+                        searchElement(data, successTask);
+                    })
+                });
+            }
+        }
+    );
+}
+//Рендеринг задач
 function renderTask(id, texts) {
     let labelTask = document.createElement('div');
     labelTask.classList.add('label__task');
@@ -39,80 +137,4 @@ function renderTask(id, texts) {
     buttons.append(edits, deletes);
 }
 
-function showTask() {
-    fetch("/showTask").then(
-        response => {
-            return response.json();
-        }
-    ).then(
-        data => {
-            for (const datum of data) {
-                renderTask(datum.id, datum.taskText);
-            }
-            if (data !== null) {
-                let button__delete = document.querySelectorAll('.delete');
-                button__delete.forEach(button => {
-                    button.addEventListener('click', () => {
-                        for (const datum of data) {
-                            if (button.id == datum.id) {
-                                deleteTask(button.id, datum.taskText);
-                                autoFetch();
-                            }
-                        }
-                    });
-                });
-                let button__edits = document.querySelectorAll('.edits');
-                button__edits.forEach(button => {
-                    button.addEventListener('click', () => {
-                        let label__task = button.closest('.label__task');
-                        let text = label__task.querySelector('.text');
-                        input__Create__Task.value = text.textContent;
-                        for (const datum of data) {
-                            if (button.id == datum.id) {
-                                input__Create__Task.addEventListener('keyup', (e) => {
-                                    if (e.key == 'Enter') {
-                                        editTask(button.id, input__Create__Task.value);
-                                        autoFetch();
-                                    }
-                                });
-                            }
-                        }
-                    });
-                });
-                let acceptButton = document.querySelectorAll('.checkbox-round');
-                acceptButton.forEach(button => {
-                    button.addEventListener('click', ()=>{
-                        let label__task = button.closest('.label__task');
-                        let text = label__task.querySelector('.text');
-                        for (const datum of data) {
-                            if (button.id == datum.id) {
-                                successTask(button.id,text.textContent);
-                                autoFetch();
-                            }
-                        }
-                    })
-                });
-            }
-        }
-    );
-}
-function addTask(text) {
-    fetch(`/addTask/${text}`);
-}
-function deleteTask(id, text) {
-    fetch(`/deleteTask/${id}/${text}`);
-}
-function editTask(id, text) {
-    fetch(`/editTask/${id}/${text}`);
-}
-function successTask(id, text){
-    fetch(`/successTask/${id}/${text}`);
-}
-function autoFetch() {
-    let tasks = document.querySelectorAll(".label__task");
-    for (const iterator of tasks) {
-        output.removeChild(iterator);
-    }
-    showTask()
-}
 showTask();

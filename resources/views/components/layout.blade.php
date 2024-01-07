@@ -13,9 +13,9 @@
 <div class="sidebar sidebar_none">
     <div class="wraper__spisok">
         <ul>
-            <li><a href="/Main">Главная</a></li>
-            <li><a href="/Delete">Удалённые</a></li>
-            <li><a href="/Success">Выполненные</a></li>
+            <li><a href="/Main">Список задач</a></li>
+            <li><a href="/Delete">Удалённые задачи</a></li>
+            <li><a href="/Success">Выполненные задачи</a></li>
         </ul>
     </div>
     <div class="wraper__burger-menu__close">
