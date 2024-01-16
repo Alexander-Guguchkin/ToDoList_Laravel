@@ -9,5 +9,4 @@ class Delete extends Model
 {
     use HasFactory;
     protected $fillable = ['deleteTask', 'statusTask'];
-
 }
