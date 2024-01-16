@@ -15,10 +15,8 @@ use App\Http\Controllers\AcceptController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/Main', function (){
+
+Route::get('/', function (){
     return view('MainView');
 });
 Route::get('/Success', function (){

@@ -13,7 +13,7 @@
 <div class="sidebar sidebar_none">
     <div class="wraper__spisok">
         <ul>
-            <li><a href="/Main">Список задач</a></li>
+            <li><a href="/">Список задач</a></li>
             <li><a href="/Delete">Удалённые задачи</a></li>
             <li><a href="/Success">Выполненные задачи</a></li>
         </ul>
@@ -21,7 +21,7 @@
     <div class="wraper__burger-menu__close">
         <button class="burger-menu__close">
             <span class="line3"></span>
-            <spam class="line4"></spam>
+            <span class="line4"></span>
         </button>
     </div>
 </div>
