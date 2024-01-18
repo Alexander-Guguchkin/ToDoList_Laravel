@@ -3,28 +3,34 @@
 let inputCreateTask = document.querySelector('.input__create__task');
 let buttonCreate = document.querySelector('.button__create');
 let output = document.querySelector('.output');
+// Создание задачи
+buttonCreate.addEventListener('click', () => {
+    let valueInput = inputCreateTask.value;
+    addTask(valueInput);
+    autoFetch();
+});
 
 // Отправка задачи на сервер
 function addTask(text) {
     fetch(`/addTask/${text}`);
 }
 
-// Отправка задачи на удаление 
+// Отправка задачи на удаление
 function deleteTask(id, text) {
     fetch(`/deleteTask/${id}/${text}`);
 }
 
-// Отправка задачи на сервер 
+// Отправка задачи на сервер
 function editTask(id, text) {
     fetch(`/editTask/${id}/${text}`);
 }
 
-// Отправка задачи на выполнение  
+// Отправка задачи на выполнение
 function successTask(id, text){
     fetch(`/successTask/${id}/${text}`);
 }
 
-// Сортировка и поиск эллемента  
+// Сортировка и поиск эллемента
 function searchElement (objData, callback, id){
     for (const datum of objData) {
         if (id == datum.id) {
@@ -32,7 +38,7 @@ function searchElement (objData, callback, id){
             autoFetch();
         }
     }
-} 
+}
 
 // Обновление страницы
 function autoFetch() {
@@ -43,12 +49,6 @@ function autoFetch() {
     showTask();
 }
 
-// Создание задачи
-buttonCreate.addEventListener('click', () => {
-    let valueInput = inputCreateTask.value;
-    addTask(valueInput); 
-    autoFetch(); 
-});
 
 //Получение и обработка задач с сервера
 function showTask() {
@@ -74,7 +74,6 @@ function showTask() {
                 });
 
                 // Редактирование задачи
-                // callback функция прописанная
                 let buttonEdits = document.querySelectorAll('.edits');
                 buttonEdits.forEach(button => {
                     button.addEventListener('click', () => {
@@ -85,7 +84,7 @@ function showTask() {
                             if (button.id == datum.id) {
                                 inputCreateTask.addEventListener('keyup', (e) => {
                                     if (e.key == 'Enter') {
-                                        editTask(button.id, inputCreateTask.value, button.id);
+                                        editTask(button.id, inputCreateTask.value);
                                         autoFetch();
                                     }
                                 });
